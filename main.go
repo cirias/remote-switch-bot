@@ -17,27 +17,29 @@ import (
 var keyboard = [][]*tgbot.KeyboardButton{
 	[]*tgbot.KeyboardButton{
 		&tgbot.KeyboardButton{
-			Text: "Left On",
+			Text: "Big Off",
 		},
 		&tgbot.KeyboardButton{
-			Text: "Right On",
+			Text: "Small Off",
 		},
 	},
 	[]*tgbot.KeyboardButton{
 		&tgbot.KeyboardButton{
-			Text: "Left Off",
+			Text: "Big On",
 		},
 		&tgbot.KeyboardButton{
-			Text: "Right Off",
+			Text: "Small On",
 		},
 	},
 }
 
-var messageCommandMap = map[string][]byte{
-	"Left On":   []byte{'a'},
-	"Right On":  []byte{'A'},
-	"Left Off":  []byte{'b'},
-	"Right Off": []byte{'B'},
+var messageCommandMap = map[string][]byte{}
+
+func init() {
+	messageCommandMap[keyboard[0][0].Text] = []byte{'a'}
+	messageCommandMap[keyboard[0][1].Text] = []byte{'A'}
+	messageCommandMap[keyboard[1][0].Text] = []byte{'b'}
+	messageCommandMap[keyboard[1][1].Text] = []byte{'B'}
 }
 
 func main() {
